@@ -270,6 +270,10 @@ private
 
         # Get the status of jobs in the job list
         qstat,errors,exit_status=WorkflowMgr.run4("qstat -x -f #{joblist} | sed -e ':a' -e 'N' -e '$\!ba' -e 's/\\n\\t/ /g'", @qstat_x_timeout)
+        @logServer.log("joblist=")
+        @logServer.log(joblist)
+        @logServer.log("qstat=")
+        @logServer.log(qstat)
 
         # Raise SchedulerDown if the qstat failed
         raise WorkflowMgr::SchedulerDown,errors unless exit_status==0

@@ -17,3 +17,6 @@ test/test.db
 # Ignore emacs backup files
 *~
 **/#*#
+
+# Ignore IntelliJ
+.idea
