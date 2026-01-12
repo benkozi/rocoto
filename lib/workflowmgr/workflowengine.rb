@@ -1734,7 +1734,10 @@ module WorkflowMgr
 
           #tdk:rm
           if task.attributes[":name"] == "aqm_ics_ext"
-            binding.break
+            File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+              f.puts "aqm_ics_ext task"
+              f.puts task
+            end
           end
 
           if not @options.all_tasks and not subset.is_selected? task
