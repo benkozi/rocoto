@@ -1795,7 +1795,7 @@ module WorkflowMgr
           #tdk:rm
           if task.attributes[:name] == "aqm_ics_ext"
             File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-              f.puts "task.dependency.nil"
+              f.puts "task.dependency.nil?"
               f.puts task.dependency.nil?
             end
           end
