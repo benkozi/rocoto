@@ -1733,12 +1733,12 @@ module WorkflowMgr
         @tasks.values.sort { |t1,t2| t1.seq <=> t2.seq }.each do |task|
 
           #tdk:rm
-          # if task.attributes[":name"] == "aqm_ics_ext"
-          File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-            f.puts task
-            f.puts task.attributes[:name]
+          if task.attributes[:name] == "aqm_ics_ext"
+            File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+              f.puts task
+              f.puts task.attributes
+            end
           end
-          # end
 
           if not @options.all_tasks and not subset.is_selected? task
             WorkflowMgr.stderr("#{task.attributes[:name]}: task is not selected by -m, -t, or -a; skip",9)
