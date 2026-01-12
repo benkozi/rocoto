@@ -1736,6 +1736,7 @@ module WorkflowMgr
           # if task.attributes[":name"] == "aqm_ics_ext"
           File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
             f.puts task
+            f.puts task.attributes
           end
           # end
 
