@@ -1737,7 +1737,7 @@ module WorkflowMgr
             File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
               f.puts task
               f.puts task.attributes
-              f.puts task.dependencies
+              f.puts task.dependency
             end
           end
 
