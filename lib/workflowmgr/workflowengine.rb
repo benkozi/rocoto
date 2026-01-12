@@ -1716,6 +1716,8 @@ module WorkflowMgr
       File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
         f.puts "submit_new_jobs: @active_cycles"
         f.puts @active_cycles
+        f.puts "submit_new_jobs: @tasks"
+        f.puts @tasks
       end
       @active_cycles.sort { |c1,c2| c1.cycle <=> c2.cycle }.each do |cycle|
 
