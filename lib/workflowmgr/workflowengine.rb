@@ -1712,6 +1712,11 @@ module WorkflowMgr
       taskcycledefs={}
 
       # Loop over active cycles and tasks, looking for eligible tasks to submit
+      #tdk:rm
+      File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+        f.puts "submit_new_jobs: @active_cycles"
+        f.puts @active_cycles
+      end
       @active_cycles.sort { |c1,c2| c1.cycle <=> c2.cycle }.each do |cycle|
 
         if not @options.all_cycles and not subset.is_selected? cycle
