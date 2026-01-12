@@ -9,4 +9,5 @@ cd ~/l/sandbox/rocoto/
 git pull
 
 cd /glade/derecho/scratch/benkoz/sandbox/srw/benkozi/aqm-data/expt_dirs/aqm_grid_AQM_NA13km_suite_GFS_v16
+rocotostat -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -v 10
 ./launch_FV3LAM_wflow.sh
