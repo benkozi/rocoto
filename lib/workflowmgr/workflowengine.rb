@@ -1794,6 +1794,13 @@ module WorkflowMgr
           # Reject this task if dependencies are not satisfied
           unless task.dependency.nil?
             wstate=WorkflowState.new(cycletime,@active_jobs,@workflowIOServer,@cycledefs,task.attributes[:name],task,tasks=@tasks)
+            #tdk:rm
+            if task.attributes[:name] == "aqm_ics_ext"
+              File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+                puts "task.dependency.resolved"
+                puts task.dependency.resolved?(wstate)
+              end
+            end
             next unless task.dependency.resolved?(wstate)
           end
 
