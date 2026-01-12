@@ -1732,6 +1732,11 @@ module WorkflowMgr
         cycletime=cycle.cycle
         @tasks.values.sort { |t1,t2| t1.seq <=> t2.seq }.each do |task|
 
+          #tdk:rm
+          if task.attributes[":name"] == "aqm_ics_ext"
+            binding.break
+          end
+
           if not @options.all_tasks and not subset.is_selected? task
             WorkflowMgr.stderr("#{task.attributes[:name]}: task is not selected by -m, -t, or -a; skip",9)
             next
