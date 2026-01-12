@@ -3,7 +3,7 @@
 set -e
 
 cd ~/htmp
-mv workflowengine.out old.workflowengine.out.$(date +"%Y%m%d-%H%M%S")
+mv workflowengine.out old.workflowengine.out.$(date +"%Y%m%d-%H%M%S") || echo "no engine.out file"
 
 cd ~/l/sandbox/rocoto/
 git pull
