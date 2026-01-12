@@ -1700,6 +1700,10 @@ module WorkflowMgr
     #
     ##########################################
     def submit_new_jobs
+      #tdk:rm
+      File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+        f.puts "submit_new_jobs: entering"
+      end
 
       # Initialize an array of the new jobs that have been submitted
       newjobs=[]
