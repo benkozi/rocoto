@@ -2,12 +2,11 @@
 
 set -e
 
-pushd ~/htmp
+cd ~/htmp
 mv workflowengine.out old.workflowengine.out.$(date +"%Y%m%d-%H%M%S")
-popd
 
-pushd ~/l/sandbox/rocoto/
+cd ~/l/sandbox/rocoto/
 git pull
-popd
 
+cd /glade/derecho/scratch/benkoz/sandbox/srw/benkozi/aqm-data/expt_dirs/aqm_grid_AQM_NA13km_suite_GFS_v16
 ./launch_FV3LAM_wflow.sh
