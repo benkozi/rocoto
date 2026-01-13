@@ -397,7 +397,7 @@ module WorkflowMgr
       @operands.each { |operand|
         if $active_task == "aqm_ics_ext"
           File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-            f.puts "operand.resolved?=", operand.resolved?(d)
+            f.puts "AND operand.resolved?=", operand.resolved?(d)
           end
         end
         return false unless operand.resolved?(d)
@@ -454,6 +454,11 @@ module WorkflowMgr
     def resolved?(d)
 
       @operands.each { |operand|
+        if $active_task == "aqm_ics_ext"
+          File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+            f.puts "OR operand.resolved?=", operand.resolved?(d)
+          end
+        end
         return true if operand.resolved?(d)
       }
       return false
