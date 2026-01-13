@@ -390,7 +390,7 @@ module WorkflowMgr
 
       if $active_task == "aqm_ics_ext"
         File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-          f.puts "@operands=" + @operands
+          f.puts "@operands=", @operands
           # f.puts caller.join("\n")
         end
       end
