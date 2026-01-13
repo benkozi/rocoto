@@ -1701,9 +1701,9 @@ module WorkflowMgr
     ##########################################
     def submit_new_jobs
       #tdk:rm
-      File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-        f.puts "submit_new_jobs: entering"
-      end
+      # File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+      #   f.puts "submit_new_jobs: entering"
+      # end
 
       # Initialize an array of the new jobs that have been submitted
       newjobs=[]
@@ -1713,12 +1713,12 @@ module WorkflowMgr
 
       # Loop over active cycles and tasks, looking for eligible tasks to submit
       #tdk:rm
-      File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-        f.puts "submit_new_jobs: @active_cycles"
-        f.puts @active_cycles
-        f.puts "submit_new_jobs: @tasks"
-        f.puts @tasks
-      end
+      # File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+      #   f.puts "submit_new_jobs: @active_cycles"
+      #   f.puts @active_cycles
+      #   f.puts "submit_new_jobs: @tasks"
+      #   f.puts @tasks
+      # end
       @active_cycles.sort { |c1,c2| c1.cycle <=> c2.cycle }.each do |cycle|
 
         if not @options.all_cycles and not subset.is_selected? cycle
@@ -1732,16 +1732,16 @@ module WorkflowMgr
         cycletime=cycle.cycle
         @tasks.values.sort { |t1,t2| t1.seq <=> t2.seq }.each do |task|
 
-          $active_task=task.attributes[:name]
+          # $active_task=task.attributes[:name]
 
-          #tdk:rm
-          if $active_task == "aqm_ics_ext"
-            File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-              f.puts task
-              f.puts task.attributes
-              f.puts task.dependency
-            end
-          end
+          # #tdk:rm
+          # if $active_task == "aqm_ics_ext"
+          #   File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+          #     f.puts task
+          #     f.puts task.attributes
+          #     f.puts task.dependency
+          #   end
+          # end
 
           if not @options.all_tasks and not subset.is_selected? task
             WorkflowMgr.stderr("#{task.attributes[:name]}: task is not selected by -m, -t, or -a; skip",9)
@@ -1795,12 +1795,12 @@ module WorkflowMgr
 
           # Reject this task if dependencies are not satisfied
           #tdk:rm
-          if $active_task == "aqm_ics_ext"
-            File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-              f.puts "task.dependency.nil?"
-              f.puts task.dependency.nil?
-            end
-          end
+          # if $active_task == "aqm_ics_ext"
+          #   File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+          #     f.puts "task.dependency.nil?"
+          #     f.puts task.dependency.nil?
+          #   end
+          # end
           unless task.dependency.nil?
             #tdk:rm
             # File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
@@ -1809,12 +1809,12 @@ module WorkflowMgr
             # end
             wstate=WorkflowState.new(cycletime,@active_jobs,@workflowIOServer,@cycledefs,task.attributes[:name],task,tasks=@tasks)
             #tdk:rm
-            if $active_task == "aqm_ics_ext"
-              File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-                f.puts "task.dependency.resolved?"
-                f.puts task.dependency.resolved?(wstate)
-              end
-            end
+            # if $active_task == "aqm_ics_ext"
+            #   File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+            #     f.puts "task.dependency.resolved?"
+            #     f.puts task.dependency.resolved?(wstate)
+            #   end
+            # end
             next unless task.dependency.resolved?(wstate)
           end
 
