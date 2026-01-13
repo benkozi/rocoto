@@ -35,7 +35,10 @@ module WorkflowMgr
     #
     #####################################################
     def resolved?(d)
-
+      File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+        f.puts "in resolved?"
+        f.puts @root.class
+      end
       begin
         return(@root.resolved?(d))
       rescue WorkflowIOHang
