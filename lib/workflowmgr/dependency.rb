@@ -42,6 +42,9 @@ module WorkflowMgr
       begin
         return(@root.resolved?(d))
       rescue WorkflowIOHang
+        File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+          f.puts "WorkflowIOHang exception caught in resolved?"
+        end
         WorkflowMgr.stderr("#{$!}",2)
         WorkflowMgr.log("#{$!}")
         return false
