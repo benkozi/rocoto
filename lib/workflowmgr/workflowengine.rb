@@ -1801,10 +1801,10 @@ module WorkflowMgr
           end
           unless task.dependency.nil?
             #tdk:rm
-            File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
-              f.puts "unless task.dependency.nil?"
-              f.puts task.attributes[:name]
-            end
+            # File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+            #   f.puts "unless task.dependency.nil?"
+            #   f.puts task.attributes[:name]
+            # end
             wstate=WorkflowState.new(cycletime,@active_jobs,@workflowIOServer,@cycledefs,task.attributes[:name],task,tasks=@tasks)
             #tdk:rm
             if task.attributes[:name] == "aqm_ics_ext"
