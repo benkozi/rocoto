@@ -39,7 +39,7 @@ module WorkflowMgr
         File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
           f.puts "in resolved?"
           f.puts @root.class
-          f.puts caller.join("\n")
+          # f.puts caller.join("\n")
         end
       end
       begin
@@ -388,6 +388,12 @@ module WorkflowMgr
     #####################################################
     def resolved?(d)
 
+      if $active_task == "aqm_ics_ext"
+        File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
+          f.puts "@operands=" + @operands
+          # f.puts caller.join("\n")
+        end
+      end
       @operands.each { |operand|
         return false unless operand.resolved?(d)
       }
