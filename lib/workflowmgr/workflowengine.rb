@@ -1732,8 +1732,10 @@ module WorkflowMgr
         cycletime=cycle.cycle
         @tasks.values.sort { |t1,t2| t1.seq <=> t2.seq }.each do |task|
 
+          $active_task=task.attributes[:name]
+
           #tdk:rm
-          if task.attributes[:name] == "aqm_ics_ext"
+          if $active_task == "aqm_ics_ext"
             File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
               f.puts task
               f.puts task.attributes
@@ -1793,7 +1795,7 @@ module WorkflowMgr
 
           # Reject this task if dependencies are not satisfied
           #tdk:rm
-          if task.attributes[:name] == "aqm_ics_ext"
+          if $active_task == "aqm_ics_ext"
             File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
               f.puts "task.dependency.nil?"
               f.puts task.dependency.nil?
@@ -1807,7 +1809,7 @@ module WorkflowMgr
             # end
             wstate=WorkflowState.new(cycletime,@active_jobs,@workflowIOServer,@cycledefs,task.attributes[:name],task,tasks=@tasks)
             #tdk:rm
-            if task.attributes[:name] == "aqm_ics_ext"
+            if $active_task == "aqm_ics_ext"
               File.open("/glade/u/home/benkoz/htmp/workflowengine.out", "a") do |f|
                 f.puts "task.dependency.resolved?"
                 f.puts task.dependency.resolved?(wstate)
