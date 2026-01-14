@@ -12,6 +12,6 @@ echo
 
 # Loop until qstat no longer finds the job
 while true; do
-  qstat "$JOB_ID"
+  qstat "$JOB_ID" || echo "hit unknown JOB_ID ${JOB_ID}"
   sleep 1
 done
