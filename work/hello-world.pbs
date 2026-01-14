@@ -1,10 +1,11 @@
 #!/bin/bash
 #PBS -N hello_world
-#PBS -l select=1:ncpus=1:mem=1gb
+#PBS -l select=1:ncpus=1
 #PBS -l walltime=00:01:00
 #PBS -j oe
 #PBS -o hello_world.out
 #PBS -A NRAL0032
+#PBS -q main
 
 # Fail fast on errors (optional but good practice)
 set -euo pipefail
