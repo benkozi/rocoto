@@ -271,12 +271,12 @@ private
         # Get the status of jobs in the job list
         qstat,errors,exit_status=WorkflowMgr.run4("qstat -x -f #{joblist} | sed -e ':a' -e 'N' -e '$\!ba' -e 's/\\n\\t/ /g'", @qstat_x_timeout)
         #tdk:rm
-        # File.open("/glade/u/home/benkoz/htmp/qstat.out", "a") do |f|
-        #   f.puts "joblist="
-        #   f.puts joblist
-        #   f.puts "qstat="
-        #   f.puts qstat
-        # end
+        File.open("/glade/u/home/benkoz/htmp/qstat.out", "a") do |f|
+          f.puts "joblist="
+          f.puts joblist
+          f.puts "qstat="
+          f.puts qstat
+        end
 
         # Raise SchedulerDown if the qstat failed
         raise WorkflowMgr::SchedulerDown,errors unless exit_status==0
