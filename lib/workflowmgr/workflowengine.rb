@@ -1394,7 +1394,7 @@ module WorkflowMgr
             # Increment unknown counter
             job.nunknowns+=1
 
-            sleep_time = 5 * (2**(job.nunknowns - 1))
+            sleep_time = 300 * (2**(job.nunknowns - 1))
             #tdk:rm
             File.open("/glade/u/home/benkoz/htmp/qstat.out", "a") do |f|
               f.puts "sleep_time="
