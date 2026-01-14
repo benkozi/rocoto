@@ -335,4 +335,17 @@ module WorkflowMgr
   end
 
 
+  ##########################################
+  #
+  # WorkflowMgr.exponential_backoff
+  #
+  ##########################################
+  def WorkflowMgr.exponential_backoff(tries, base_sleep = 1, max_sleep = 64)
+
+    sleep_time = [base_sleep * (2**(tries - 1)), max_sleep].min
+    sleep(sleep_time)
+
+  end
+
+
 end  # module workflowmgr
