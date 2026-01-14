@@ -1394,6 +1394,14 @@ module WorkflowMgr
             # Increment unknown counter
             job.nunknowns+=1
 
+            sleep_time = 5 * (2**(job.nunknowns - 1))
+            #tdk:rm
+            File.open("/glade/u/home/benkoz/htmp/qstat.out", "a") do |f|
+              f.puts "sleep_time="
+              f.puts sleep_time
+            end
+            sleep(sleep_time)
+
             # Assume the job failed if too many consecutive UNKNOWNS
             unknownmsg=""
             if job.nunknowns >= @config.MaxUnknowns
