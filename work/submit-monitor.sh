@@ -3,13 +3,14 @@ set -euo pipefail
 
 PBS_SCRIPT="hello-world.pbs"
 
+JOB_IDS=()
 for i in {1..3}; do
   JOB_ID=$(qsub "$PBS_SCRIPT")
   JOB_IDS+=("$JOB_ID")
   echo "Submitted job $i: $JOB_ID"
 done
 
-echo "Submitted job: $JOB_IDS"
+echo "Submitted jobs: $JOB_IDS"
 echo "Polling qstat every second..."
 echo
 
