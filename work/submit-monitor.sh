@@ -12,13 +12,6 @@ echo
 
 # Loop until qstat no longer finds the job
 while true; do
-  if qstat "$JOB_ID" >/dev/null 2>&1; then
-    clear
-    qstat "$JOB_ID"
-    sleep 1
-  else
-    echo
-    echo "Job $JOB_ID no longer in qstat (finished or exited queue)."
-    break
-  fi
+  qstat "$JOB_ID"
+  sleep 1
 done
