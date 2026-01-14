@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-PBS_SCRIPT="hello.pbs"
+PBS_SCRIPT="hello-world.pbs"
 
 # Submit the job and capture the job ID
 JOB_ID=$(qsub "$PBS_SCRIPT")
