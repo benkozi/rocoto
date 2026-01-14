@@ -9,7 +9,7 @@ for i in {1..3}; do
   echo "Submitted job $i: $JOB_ID"
 done
 
-echo "Submitted job: $JOB_ID"
+echo "Submitted job: $JOB_IDS"
 echo "Polling qstat every second..."
 echo
 
