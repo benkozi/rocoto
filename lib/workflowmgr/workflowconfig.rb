@@ -29,7 +29,8 @@ module WorkflowMgr
                     :VacuumPurgeDays => 30,
                     :SubmitThreads => 8,
                     :JobQueueTimeout => 45,
-                    :JobAcctTimeout => 45
+                    :JobAcctTimeout => 45,
+                    :UnknownSleepIntervalSecs => 30
                    }
 
     ##########################################
