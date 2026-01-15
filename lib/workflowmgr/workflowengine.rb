@@ -1395,7 +1395,8 @@ module WorkflowMgr
             job.nunknowns+=1
 
             # sleep_time = 30 * (2**(job.nunknowns - 1))
-            sleep_time = @config.UnknownSleepIntervalSecs * job.nunknowns
+            # sleep_time = @config.UnknownSleepIntervalSecs * job.nunknowns
+            sleep_time = @config.UnknownSleepIntervalSecs
             #tdk:rm
             File.open("/glade/u/home/benkoz/htmp/qstat.out", "a") do |f|
               f.puts "sleep_time="
